@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Wayback Machine Page Opener",
+  "version": "1.0.0",
+  "description": "Scans the current Wayback Machine page for archive snapshot links and opens them all in new tabs, so you can quickly check what's archived.",
+  "icons": {
+    "48": "icon.svg"
+  },
+  "permissions": [
+    "tabs",
+    "https://web.archive.org/*"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Open all Wayback links on this page"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.archive.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
